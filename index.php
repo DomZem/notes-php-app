@@ -1,22 +1,13 @@
 <?php 
-  declare(strict_types=1);
-  namespace App;
-  require_once("src/utilities/debug.php");
-  require_once("src/View.php");
-  
-  const DEFAULT_ACTION = 'list';
+declare(strict_types=1);
+namespace App;
 
-  $action = $_GET['action'] ?? DEFAULT_ACTION;
-  $view = new View();
+require_once("src/utilities/debug.php");
+require_once("src/Controller.php");
 
-  $viewParams = []; 
+$request = [
+  'get' => $_GET,
+  'post' => $_POST,
+];
 
-  if($action === "create") {
-    $page = 'create';
-    $viewParams['resultCreate'] = 'it work!';
-  } else {
-    $page = 'list';
-    $viewParams['resultList'] = 'display notes';
-  }
-
-  $view->render($page, $viewParams);
+(new Controller($request))->run();

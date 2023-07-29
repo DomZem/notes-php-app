@@ -2,12 +2,21 @@
   declare(strict_types=1);
   namespace App;
   require_once("src/utilities/debug.php");
+  require_once("src/View.php");
   
-  $action = $_GET['action'] ?? null;
+  const DEFAULT_ACTION = 'list';
 
+  $action = $_GET['action'] ?? DEFAULT_ACTION;
+  $view = new View();
 
-  if($action === 'create') {
-    include_once('templates/pages/create.php');
+  $viewParams = []; 
+
+  if($action === "create") {
+    $page = 'create';
+    $viewParams['resultCreate'] = 'it work!';
   } else {
-    include_once('templates/pages/list.php');
+    $page = 'list';
+    $viewParams['resultList'] = 'display notes';
   }
+
+  $view->render($page, $viewParams);

@@ -3,7 +3,7 @@ declare(strict_types=1);
   
 namespace App\Exception;
 
-require_once('./AppException.php');
+require_once('src/exception/AppException.php');
 
 class ConfigurationException extends AppException {
   

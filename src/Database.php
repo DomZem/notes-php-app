@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace App;
 
-require_once("exception/StorageException.php.php");
+require_once("exception/StorageException.php");
 require_once("exception/ConfigurationException.php");
 
 use App\Exception\ConfigurationException;
